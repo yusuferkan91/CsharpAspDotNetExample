@@ -1,0 +1,50 @@
+﻿body {
+    background-color: #363636;
+    color: #4C62FF;
+    font-family: "Century Gothic";
+}
+
+.task {
+    background-color: #45B074;
+    color: white;
+    text-align: center;
+}
+.otherAction {
+    background-color: #4C62FF;
+    color: white;
+    text-align: center;
+}
+th{
+    color:white
+}
+.whiteText {
+    color: white
+}
+.info {
+    font-size: 22px;
+}
+.lblTask {
+    color: #45B074
+}
+a.upButtonPerson {
+    color: white;
+    width: 250px;
+    background-color: #4C62FF;
+    text-align: center;
+    font-size: 22px;
+}
+a.upButtonTask {
+    color: white;
+    width: 270px;
+    background-color: #45B074;
+    text-align: center;
+    font-size: 22px;
+}
+.line{
+    height:20px;
+}
+td {
+    background-color: white;
+    color: #4C62FF;
+    width: 100px;
+}

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ResinaSoft_ASP.ViewModels.PersonTaskViewModel.PersonTaskViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "TaskToPerson";
+}
+
+<h1 class="lblTask">@ViewBag.TaskName</h1>
+<hr />
+<br />
+
+<p>
+    <a class="upButtonPerson" asp-action="AddPerson" asp-route-taskId="@ViewBag.TaskId">Assign Person</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.LastName)
+            </td>
+            <td class="task">
+                @Html.ActionLink("Delete", "DeletePerson", new { taskId = item.TaskID, personId = item.PersonID }, new { @class = "task" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

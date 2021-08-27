@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ResinaSoft_ASP.ViewModels.TaskViewModels.TaskViewModel>
+
+@{
+    ViewData["Title"] = "Task Management";
+}
+
+<h1 class="lblTask">Task Management</h1>
+<hr />
+<br />
+<div>
+    <a class="upButtonPerson" style="float:left" asp-action="Create">Create New Task</a>
+    @*<a class="upButtonTask" style="float:right" asp-action="Persons">Person Management</a>*@
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="otherAction">
+                @Html.ActionLink("Persons", "TaskToPerson", "PersonTask", new { taskId = item.Id }, new { @class = "otherAction" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+
+            <td class="task">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "task" })
+            </td>
+            <td class="task">
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "task" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

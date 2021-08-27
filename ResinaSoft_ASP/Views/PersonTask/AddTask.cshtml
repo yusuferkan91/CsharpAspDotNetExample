@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ResinaSoft_ASP.ViewModels.TaskViewModels.TaskViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Assign Task";
+}
+
+<h1>Assign Task</h1>
+<hr />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td class="otherAction">
+                @Html.ActionLink("Assign to Person", "AddToPerson", new {  taskId=item.Id, personId=ViewBag.PersonId }, new { @class = "otherAction" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

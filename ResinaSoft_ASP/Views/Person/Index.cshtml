@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ResinaSoft_ASP.ViewModels.PersonViewModels.PersonViewModel>
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+@{
+
+    ViewData["Title"] = "Person Management";
+}
+
+<h1>Person Management</h1>
+<hr />
+<br />
+<div style="justify-content:space-between">
+    <a class="upButtonPerson" style="float:left" asp-action="Create">Create New Person</a>
+    @*<a class="upButtonTask" style="float:right" asp-action="Tasks">Task Management</a>*@
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="task">
+                    @Html.ActionLink("Go to tasks", "PersonToTask", "PersonTask", new { personId = item.Id }, new { @class = "task" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td class = "otherAction" >
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "otherAction" }) 
+                    </td>
+                <td class = "otherAction" >
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "otherAction" }) 
+                    </td>
+                <td class = "otherAction" >
+                    @Html.ActionLink("Address", "Index", "Address", new { personId = item.Id }, new { @class = "otherAction" })
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
